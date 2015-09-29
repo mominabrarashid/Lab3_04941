@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Plane Flies </title>
+<style>
+	#horizontal-scroll {
+	width: 2048px; 
+	height: 768px;  
+	background-image: url(back1.png);
+	background-position: 0px 0px;
+	background-repeat: repeat-x;
+
+	animation: animatedBackground 10s linear infinite;
+	}
+@keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: -100% 0; }
+}
+	
+	.object{
+	position: absolute;
+	}
+
+	.plane{
+	top: 20%;
+	left: 40%;
+	}
+	
+	.object:hover {
+	transform: translate(0,-100px);
+    	-webkit-transform: translate(0,-100x);
+    	-o-transform: translate(0,-100px); 
+    	-moz-transform: translate(0,-100px);
+	}
+
+	
+}
+	
+</style>
+</head>
+
+<body>
+<div id="horizontal-scroll">
+<img class="object plane" src="theplane.png"/>
+</div>
+
+</body>
+</html>
