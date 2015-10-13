@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Plane Flies </title>
+
+<script language="javascript" type="text/javascript">
+function keys()
+{
+	document.addEventListener("keyup", moves);
+}
+var fvar=setInterval(collisionDetection,33);
+var score=0;
+var FlyingPlane;
+var FlyingCrow1=document.getElementById("crow1");
+var FlyingCrow2=document.getElementById("crow2");
+var FlyingCrow3=document.getElementById("crow3");
+var FlyingCrow4=document.getElementById("crow4");
+
+function moves(event)
+{
+var y1=document.getElementById("crow1").offsetLeft;
+	console.log(y1);
+	var keyPressed = String.fromCharCode(event.keyCode);
+	FlyingPlane=document.getElementById("flies");
+	var y=document.getElementById("flies").offsetTop;
+	if (keyPressed=="&" && y>8)
+	{
+		FlyingPlane.style.top = parseInt(FlyingPlane.style.top) - 20 + "px";
+	}
+	if (keyPressed=="(" && y<667)
+	{
+		FlyingPlane.style.top = parseInt(FlyingPlane.style.top) + 20 + "px";
+	}
+	
+	if (keyPressed=="&" || "(")
+	{
+		score=score+1;
+	}
+}
+
+function collisionDetection()
+{
+	var y=document.getElementById("flies").offsetTop;
+	var y1=document.getElementById("crow1").offsetLeft;
+	var y2=document.getElementById("crow2").offsetLeft;
+	var y3=document.getElementById("crow3").offsetLeft;
+	var y4=document.getElementById("crow4").offsetLeft;
+
+	if(y<107 && y3>133 && y3<370){
+	window.open("plane.html","_self")
+	window.alert("Game Over! " + "Your Score is" + " " +score);
+	}
+	if(y<107 && y2>133 && y2<370){
+	window.open("plane.html","_self")
+	window.alert("Game Over! " + "Your Score is" + " " +score);
+	}
+	if(y>207 && y<307 && y1>133 && y1<370){
+	window.open("plane.html","_self")
+	window.alert("Game Over! " + "Your Score is" + " " +score);
+	}
+	if(y>287 && y<367 && y4>133 && y4<370){
+	window.open("plane.html","_self")
+	window.alert("Game Over! " + "Your Score is" + " " +score);
+	}
+}
+	
+</script>
+
+<style>
+	#horizontal-scroll {
+	width: 2048px; 
+	height: 768px;  
+	background-image: url(back1.png);
+	background-position: 0px 0px;
+	background-repeat: repeat-x;
+
+	animation: animatedBackground 10s linear infinite;
+	}
+
+	
+@keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: -100% 0; }
+}
+	
+@-webkit-keyframes movingCrows{
+	0% {left:100%}
+	50%{left:50%}
+	100%{left:0%}
+}
+	
+	.crows{
+	position:absolute;
+	width: 42px;
+	height: 42px;
+	top: 30%;
+	left: 50%;
+	animation:movingCrows 5s infinite linear;
+	}	
+
+	.crows1{
+	top: 40%;
+	left: 80%;
+	animation-delay: 0.5s;
+	}
+
+	.crows2{
+	top: 10%;
+	left: 30%;
+	}
+
+
+	.crows3{
+	top: 10%;
+	left: 20%;
+	animation-delay: 3.7s;
+	}
+	
+	.crows4{
+	top: 50%;
+	left: 50%;
+	animation-delay: 3s;
+	}
+	
+	.object{
+	position: absolute;
+	}
+
+	.plane{
+	top: 20%;
+	left: 40%;
+	}
+	
+	
+}
+	
+</style>
+</head>
+
+<body onload="keys()">
+<div id="horizontal-scroll">
+<img class="object" id="flies" src="theplane.png" style="top:307px; left: 200px;"/>
+<img class="crows crows1" id="crow1" src="crow.png"/>
+<img class="crows crows2" id="crow2" src="crow.png"/>
+<img class="crows crows3" id="crow3" src="crow.png" style="left:2048px;"/>
+<img class="crows crows4" id="crow4" src="crow.png" style="left:2048px;"/>
+
+</div>
+
+</body>
+</html>
